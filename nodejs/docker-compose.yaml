@@ -10,6 +10,8 @@ services:
       - DATABASE_URL=postgres://db_user:db_password@sample_db:5432/db_node_app
     depends_on:
       - sample_db
+    networks:
+      - backend
 
   sample_db:
     container_name: sample-db
@@ -20,6 +22,11 @@ services:
       - POSTGRES_DB=db_node_app
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
 
 volumes:
   pgdata:
+
+networks:
+  backend:
