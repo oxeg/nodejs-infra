@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: sample-nodejs
+    build: .
+    ports:
+      - "8080:8080"
