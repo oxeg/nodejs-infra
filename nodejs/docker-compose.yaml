@@ -1,8 +1,25 @@
 version: '3.8'
 
 services:
-  app:
+  sample_app:
     container_name: sample-nodejs
     build: .
     ports:
       - "8080:8080"
+    environment:
+      - DATABASE_URL=postgres://db_user:db_password@sample_db:5432/db_node_app
+    depends_on:
+      - sample_db
+
+  sample_db:
+    container_name: sample-db
+    image: postgres:15.2-alpine3.17
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_password
+      - POSTGRES_DB=db_node_app
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
