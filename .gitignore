@@ -189,3 +189,6 @@ override.tf.json
 terraform.rc
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,node,terraform
+
+# other stuff
+create_backend.sh
